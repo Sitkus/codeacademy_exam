@@ -13,6 +13,7 @@ class BasePage extends Page
 
         parent::__construct($data + [
                 'css' => [
+                    'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap',
                     '/media/css/styles.css'
                 ],
                 'js' => [],

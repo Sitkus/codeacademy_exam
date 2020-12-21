@@ -40,26 +40,8 @@ function validate_fields_match($form_values, array &$form, array $params): bool
  */
 function validate_field_not_empty(string $field_value, array &$field): bool
 {
-
     if ($field_value == '') {
         $field['error'] = 'Field must be filled';
-        return false;
-    }
-
-    return true;
-}
-
-/**
- * Chef if field contains space
- *
- * @param string $field_value
- * @param array $field
- * @return bool
- */
-function validate_field_contains_space(string $field_value, array &$field): bool
-{
-    if (str_word_count(trim($field_value)) < 2) {
-        $field['error'] = 'Field must contain space';
         return false;
     }
 

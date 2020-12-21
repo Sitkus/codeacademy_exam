@@ -15,7 +15,7 @@ class RegisterForm extends Form
                 ],
                 'fields' => [
                     'firstname' => [
-                        'label' => 'First name',
+                        'label' => 'First name *',
                         'type' => 'text',
                         'validators' => [
                             'validate_field_not_empty',
@@ -28,7 +28,7 @@ class RegisterForm extends Form
                         ]
                     ],
                     'lastname' => [
-                        'label' => 'Last name',
+                        'label' => 'Last name *',
                         'type' => 'text',
                         'validators' => [
                             'validate_field_not_empty',
@@ -41,7 +41,7 @@ class RegisterForm extends Form
                         ]
                     ],
                     'email' => [
-                        'label' => 'Email',
+                        'label' => 'Email *',
                         'type' => 'email',
                         'validators' => [
                             'validate_field_not_empty',
@@ -56,7 +56,7 @@ class RegisterForm extends Form
                         ]
                     ],
                     'password' => [
-                        'label' => 'Password',
+                        'label' => 'Password *',
                         'type' => 'password',
                         'validators' => [
                             'validate_field_not_empty',
@@ -69,7 +69,7 @@ class RegisterForm extends Form
                         ]
                     ],
                     'password_repeat' => [
-                        'label' => 'Password Repeat',
+                        'label' => 'Repeat password *',
                         'type' => 'password',
                         'validators' => [
                             'validate_field_not_empty',

@@ -6,9 +6,10 @@ use App\App;
 
 class LogoutController
 {
+
     public function logout()
     {
-        App::$session->logout('/login');
+        App::$session->logout('/index');
     }
 
 }

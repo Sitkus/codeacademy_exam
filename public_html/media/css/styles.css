@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+
+
+
+
+/*------------------------------------*\
+  # Default settings
+\*------------------------------------*/
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -19,20 +27,20 @@ body {
     text-align: center;
 }
 
-main {
-    padding-top: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+ul {
+    list-style: none;
 }
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
 
 h1, h2, h3, h4 {
     margin: 10px;
-}
-
-main {
-    margin-bottom: 50px;
 }
 
 .title {
@@ -139,36 +147,36 @@ button:hover {
   # Navigation
 \*------------------------------------*/
 
-nav {
-    display: flex;
-    justify-content: center;
-    background-color: orangered;
-    width: 100vw;
-    padding: 20px;
-    font-size: 40px;
-}
+/*nav {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    background-color: orangered;*/
+/*    width: 100vw;*/
+/*    padding: 20px;*/
+/*    font-size: 40px;*/
+/*}*/
 
-ul {
-    display: flex;
-    justify-content: flex-end;
-    list-style: none;
-    padding: 0;
-    align-items: center;
-}
+/*ul {*/
+/*    display: flex;*/
+/*    justify-content: flex-end;*/
+/*    list-style: none;*/
+/*    padding: 0;*/
+/*    align-items: center;*/
+/*}*/
 
-a {
-    padding: 10px;
-    color: white;
-    background-color: orangered;
-    text-decoration: none;
-    font-size: 25px;
-    cursor: pointer;
-    transition: 0.4s;
-}
+/*a {*/
+/*    padding: 10px;*/
+/*    color: white;*/
+/*    background-color: orangered;*/
+/*    text-decoration: none;*/
+/*    font-size: 25px;*/
+/*    cursor: pointer;*/
+/*    transition: 0.4s;*/
+/*}*/
 
-a:hover {
-    color: black;
-}
+/*a:hover {*/
+/*    color: black;*/
+/*}*/
 
 
 
@@ -217,4 +225,76 @@ a:hover {
     align-items: center;
     border: 1px solid gray;
     padding: 5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------*\
+  # Header
+\*------------------------------------*/
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 100%;
+    background-color: #ccc;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    max-width: 800px;
+}
+
+.nav__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav__item {
+
+}
+
+.nav__link {
+
+}
+
+
+
+
+
+/*------------------------------------*\
+  # Hero
+\*------------------------------------*/
+
+.hero {
+    background-image: url('/media/images/header.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 300px;
 }

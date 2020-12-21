@@ -32,8 +32,7 @@ class HomeController
     public function __construct()
     {
         $this->page = new BasePage([
-            'title' => 'Pizzas',
-            'js' => ['/media/js/home.js']
+            'title' => 'Home',
         ]);
     }
 
@@ -45,36 +44,7 @@ class HomeController
      */
     public function index(): ?string
     {
-        $user = App::$session->getUser();
-
-        if ($user) {
-            if ($user['role'] == 'admin') {
-                $forms = [
-                    'create' => (new PizzaCreateForm())->render(),
-                    'update' => (new PizzaUpdateForm())->render()
-                ];
-            }
-
-            $heading = "Zdarova, {$user['user_name']}";
-            $links = [
-                'login' => (new Link([
-                    'url' => App::$router::getUrl('logout'),
-                    'text' => 'Logout'
-                ]))->render()
-            ];
-        } else {
-            $heading = 'Jus neprisijunges';
-            $links = [
-                'login' => (new Link([
-                    'url' => App::$router::getUrl('login'),
-                    'text' => 'Login'
-                ]))->render()
-            ];
-        }
-
         $content = (new View([
-            'title' => 'Welcome to our pizzaria',
-            'heading' => $heading,
             'forms' => $forms ?? [],
             'links' => $links ?? []
         ]))->render(ROOT . '/app/templates/content/index.tpl.php');

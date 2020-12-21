@@ -15,6 +15,7 @@ class RegisterController extends GuestController
     public function __construct()
     {
         parent::__construct();
+
         $this->form = new RegisterForm();
         $this->page = new BasePage([
             'title' => 'Register'
@@ -26,9 +27,12 @@ class RegisterController extends GuestController
             $clean_inputs = $this->form->values();
             unset($clean_inputs['password_repeat']);
             App::$db->insertRow('users', $clean_inputs);
+
             header('Location: /login');
         }
+
         $this->page->setContent($this->form->render());
+
         return $this->page->render();
     }
 }

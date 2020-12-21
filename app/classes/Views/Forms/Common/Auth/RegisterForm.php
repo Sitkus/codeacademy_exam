@@ -9,6 +9,10 @@ class RegisterForm extends Form
     public function __construct()
     {
         parent::__construct([
+                'attr' => [
+                    'class'  => 'sign-up-in',
+                    'method' => 'POST'
+                ],
                 'fields' => [
                     'firstname' => [
                         'label' => 'First name',
@@ -18,7 +22,7 @@ class RegisterForm extends Form
                         ],
                         'extra' => [
                             'attr' => [
-                                'class'       => 'form__input',
+                                'class'       => 'sign-up-in__input',
                                 'placeholder' => 'Johnny',
                             ]
                         ]
@@ -31,7 +35,7 @@ class RegisterForm extends Form
                         ],
                         'extra' => [
                             'attr' => [
-                                'class'       => 'form__input',
+                                'class'       => 'sign-up-in__input',
                                 'placeholder' => 'Bravo',
                             ]
                         ]
@@ -46,7 +50,7 @@ class RegisterForm extends Form
                         ],
                         'extra' => [
                             'attr' => [
-                                'class'       => 'form__input',
+                                'class'       => 'sign-up-in__input',
                                 'placeholder' => 'johnny.bravo@gmail.com',
                             ]
                         ]
@@ -59,7 +63,7 @@ class RegisterForm extends Form
                         ],
                         'extra' => [
                             'attr' => [
-                                'class'       => 'form__input',
+                                'class'       => 'sign-up-in__input',
                                 'placeholder' => '*******',
                              ]
                         ]
@@ -72,7 +76,7 @@ class RegisterForm extends Form
                         ],
                         'extra' => [
                             'attr' => [
-                                'class'       => 'form__input',
+                                'class'       => 'sign-up-in__input',
                                 'placeholder' => '*******',
                             ]
                         ]
@@ -82,7 +86,7 @@ class RegisterForm extends Form
                         'type' => 'number',
                         'extra' => [
                             'attr' => [
-                                'class'       => 'form__input',
+                                'class'       => 'sign-up-in__input',
                                 'placeholder' => '+37065445347',
                             ]
                         ]
@@ -92,7 +96,7 @@ class RegisterForm extends Form
                         'type' => 'number',
                         'extra' => [
                             'attr' => [
-                                'class'       => 'form__input  form__input--last',
+                                'class'       => 'sign-up-in__input  sign-up-in__input--last',
                                 'placeholder' => 'Moscow',
                             ]
                         ]
@@ -103,7 +107,7 @@ class RegisterForm extends Form
                         'title' => 'Register',
                         'extra' => [
                             'attr' => [
-                                'class' => 'form__button',
+                                'class' => 'sign-up-in__button',
                             ]
                         ]
                     ]

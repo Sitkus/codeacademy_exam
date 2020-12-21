@@ -6,47 +6,58 @@ use Core\Views\Form;
 
 class LoginForm extends Form
 {
-public function __construct()
-{
-    parent::__construct([
-        'fields' => [
-            'email' => [
-                'label' => 'Email',
-                'type' => 'text',
-                'validators' => [
-                    'validate_field_not_empty',
-                    'validate_email',
+    public function __construct()
+    {
+        parent::__construct([
+            'attr' => [
+                'class'  => 'sign-up-in',
+                'method' => 'POST'
+            ],
+            'fields' => [
+                'email' => [
+                    'label' => 'Email',
+                    'type' => 'email',
+                    'validators' => [
+                        'validate_field_not_empty',
+                        'validate_email',
+                    ],
+                    'extra' => [
+                        'attr' => [
+                            'class'       => 'sign-up-in__input',
+                            'placeholder' => 'johnny.bravo@gmail.com',
+                        ],
+                    ],
                 ],
-                'extra' => [
-                    'attr' => [
-                        'placeholder' => 'Įvesk emailą',
+                'password' => [
+                    'label' => 'Password',
+                    'type' => 'password',
+                    'validators' => [
+                        'validate_field_not_empty',
+                    ],
+                    'extra' => [
+                        'attr' => [
+                            'class'       => 'sign-up-in__input',
+                            'placeholder' => '*******',
+                        ],
                     ],
                 ],
             ],
-            'password' => [
-                'label' => 'Password',
-                'type' => 'password',
-                'validators' => [
-                    'validate_field_not_empty',
-                ],
-                'extra' => [
-                    'attr' => [
-                        'placeholder' => 'Įvesk slaptažodį',
-                    ],
+            'buttons' => [
+                'login' => [
+                    'title' => 'Login',
+                    'extra' => [
+                        'attr' => [
+                            'class' => 'sign-up-in__button',
+                        ]
+                    ]
                 ],
             ],
-        ],
-        'buttons' => [
-            'login' => [
-                'title' => 'Login',
-            ],
-        ],
-        'validators' => [
-            'validate_login' => [
-                'email',
-                'password',
+            'validators' => [
+                'validate_login' => [
+                    'email',
+                    'password',
+                ]
             ]
-        ]
-    ]);
-}
+        ]);
+    }
 }

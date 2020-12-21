@@ -14,7 +14,7 @@ Router::add('index2', '/index', \App\Controllers\Common\HomeController::class);
 
 // Other page routes
 //Router::add('user_orders', '/my/orders', \App\Controllers\User\OrdersController::class);
-Router::add('reviews', '/reviews', \App\Controllers\Common\ReviewsController::class);
+Router::add('about-us', '/about-us', \App\Controllers\Common\AboutUsController::class);
 
 // API Routes
 Router::add('api_pizza_get', '/api/pizza/get', \App\Controllers\Common\API\PizzaApiController::class);

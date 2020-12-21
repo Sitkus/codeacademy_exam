@@ -11,8 +11,7 @@ class InstallController {
 
         App::$db->createTable('users');
         App::$db->insertRow('users', ['email' => 'test@test.lt', 'password' => 'test', 'firstname' => 'Lukas', 'lastname' => 'Sitkus']);
-//        App::$db->createTable('pizzas');
-//        App::$db->createTable('orders');
+        App::$db->createTable('reviews');
     }
 }
 

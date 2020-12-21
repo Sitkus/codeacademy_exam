@@ -4,79 +4,51 @@ namespace App\Controllers\Common;
 
 use App\App;
 use App\Views\BasePage;
-use App\Views\Forms\Admin\Pizza\PizzaCreateForm;
-use App\Views\Forms\Admin\Pizza\PizzaUpdateForm;
+use App\Views\Forms\Review\ReviewCreateForm;
+use App\Views\Tables\User\ReviewTable;
 use Core\View;
 use Core\Views\Link;
 
 class AboutUsController
 {
-    protected $page;
+    protected BasePage $page;
 
-    /**
-     * Controller constructor.
-     *
-     * We can write logic common for all
-     * other methods
-     *
-     * For example, create $page object,
-     * set it's header/navigation
-     * or check if user has a proper role
-     *
-     * Goal is to prepare $page
-     */
     public function __construct()
     {
         $this->page = new BasePage([
-            'title' => 'Pizzas',
-            'js' => ['/media/js/home.js']
+            'title' => 'About Us',
+            'js' => ['/media/js/user/review.js']
         ]);
     }
-
-    /**
-     * Home Controller Index
-     *
-     * @return string|null
-     * @throws \Exception
-     */
     public function index(): ?string
     {
         $user = App::$session->getUser();
 
         if ($user) {
-            if ($user['role'] == 'admin') {
-                $forms = [
-                    'create' => (new PizzaCreateForm())->render(),
-                    'update' => (new PizzaUpdateForm())->render()
-                ];
-            }
-
-            $heading = "Zdarova, {$user['user_name']}";
-            $links = [
-                'login' => (new Link([
-                    'url' => App::$router::getUrl('logout'),
-                    'text' => 'Logout'
-                ]))->render()
+            $forms = [
+                'create' => (new ReviewCreateForm())->render(),
             ];
         } else {
-            $heading = 'Please login to see';
             $links = [
-                'login' => (new Link([
-                    'url' => App::$router::getUrl('login'),
-                    'text' => 'Login'
+                'register' => (new Link([
+                    'url' => App::$router::getUrl('register'),
+                    'text' => 'Would you like to leave a review? Register!'
                 ]))->render()
             ];
         }
 
+        $rows = App::$db->getRowsWhere('reviews');
+
+        $table = new ReviewTable();
         $content = (new View([
-            'title' => 'Welcome to our pizzaria',
-            'heading' => $heading,
+            'title' => 'Reviews',
+            'table' => $table->render(),
             'forms' => $forms ?? [],
+            'message' => $text ?? [],
             'links' => $links ?? []
-        ]))->render(ROOT . '/app/templates/content/index.tpl.php');
+        ]))->render(ROOT . '/app/templates/content/about-us.tpl.php');
 
         $this->page->setContent($content);
-
         return $this->page->render();
     }
 }

@@ -22,7 +22,7 @@ class OrdersController extends AdminController
         parent::__construct();
         $this->page = new BasePage([
             'title' => 'Orders',
-            'js' => ['/media/js/admin/orders.js']
+            'js' => ['/media/js/admin/review.js']
 
         ]);
     }

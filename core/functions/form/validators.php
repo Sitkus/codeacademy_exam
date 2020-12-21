@@ -71,7 +71,7 @@ function validate_field_range(string $field_value, array &$field, array $params)
  */
 function validate_numeric(string $field_value, array &$field): bool
 {
-    if (!is_numeric($field_value)) {
+    if (!is_numeric($field_value) && strlen($field_value) > 0) {
         $field['error'] = 'Field input must be numeric';
 
         return false;

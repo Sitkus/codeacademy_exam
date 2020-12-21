@@ -10,10 +10,9 @@ class InstallController {
         App::$db = new FileDB(DB_FILE);
 
         App::$db->createTable('users');
-        App::$db->insertRow('users', ['email' => 'test@test.lt', 'password' => 'test', 'user_name' => 'testas', 'role' => 'user']);
-        App::$db->insertRow('users', ['email' => 'admin@admin.lt', 'password' => 'admin', 'user_name' => 'Admin God', 'role' => 'admin']);
-        App::$db->createTable('pizzas');
-        App::$db->createTable('orders');
+        App::$db->insertRow('users', ['email' => 'test@test.lt', 'password' => 'test', 'firstname' => 'Lukas', 'lastname' => 'Sitkus']);
+//        App::$db->createTable('pizzas');
+//        App::$db->createTable('orders');
     }
 }
 

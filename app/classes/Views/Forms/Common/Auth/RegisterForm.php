@@ -74,7 +74,7 @@ class RegisterForm extends Form
                     ],
                     'password_repeat' => [
                         'label' => 'Repeat password *',
-                        'type' => 'password',
+                        'type'  => 'password',
                         'validators' => [
                             'validate_field_not_empty',
                         ],
@@ -87,7 +87,7 @@ class RegisterForm extends Form
                     ],
                     'phone' => [
                         'label' => 'Phone number',
-                        'type' => 'number',
+                        'type'  => 'number',
                         'validators' => [
                             'validate_numeric',
                         ],
@@ -100,7 +100,7 @@ class RegisterForm extends Form
                     ],
                     'address' => [
                         'label' => 'Home address',
-                        'type' => 'number',
+                        'type'  => 'text',
                         'extra' => [
                             'attr' => [
                                 'class'       => 'sign-up-in__input  sign-up-in__input--last',

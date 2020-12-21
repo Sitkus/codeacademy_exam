@@ -9,13 +9,15 @@ class BasePage extends Page
     public function __construct($data)
     {
         $nav = new Navigation();
+        $footer = new Footer();
 
         parent::__construct($data + [
                 'css' => [
                     '/media/css/styles.css'
                 ],
                 'js' => [],
-                'header' => $nav->render()
+                'header' => $nav->render(),
+                'footer' => $footer->render()
             ]);
     }
 
@@ -42,5 +44,10 @@ class BasePage extends Page
     public function setContent($content): void
     {
         $this->data['content'] = $content;
+    }
+
+    public function setFooter($footer): void
+    {
+        $this->data['footer'] = $footer;
     }
 }

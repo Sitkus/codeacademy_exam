@@ -1,9 +1,5 @@
 <?php
 
-// //////////////////////////////
-// [1] FORM VALIDATORS
-// //////////////////////////////
-
 /**
  * Check if field values are the same
  *
@@ -26,10 +22,6 @@ function validate_fields_match($form_values, array &$form, array $params): bool
 
     return true;
 }
-
-// //////////////////////////////
-// [2] FIELD VALIDATORS
-// //////////////////////////////
 
 /**
  * Check if field is not empty
@@ -88,25 +80,6 @@ function validate_numeric(string $field_value, array &$field): bool
     return true;
 }
 
-
-/**
- * Check if selected value is one of the possible options in options array
- *
- * @param string $field_input
- * @param array $field
- * @return bool
- */
-function validate_select(string $field_input, array &$field): bool
-{
-    if (!isset($field['options'][$field_input])) {
-        $field['error'] = 'Input doesn\'t exist';
-
-        return false;
-    }
-
-    return true;
-}
-
 /**
  * Check if provided email is in correct format
  *
@@ -126,19 +99,37 @@ function validate_email(string $field_value, array &$field): bool
 }
 
 /**
- * Check if input is valid URL
+ * Validate that name length is
  *
  * @param string $field_value
  * @param array $field
  * @return bool
  */
-function validate_url(string $field_value, array &$field): bool
+function validate_name_length(string $field_value, array &$field)
 {
-    if (!filter_var($field_value, FILTER_VALIDATE_URL)) {
-        $field['error'] = 'Input is not a valid URL';
+    if (strlen($field_value) >= 40) {
+        $field['error'] = 'Too many letters, 40 is maximum';
 
         return false;
-    };
+    }
+
+    return true;
+}
+
+/**
+ * Checks if first or last name doesn't contain any non alphabetic symbols
+ *
+ * @param string $field_value
+ * @param array $field
+ * @return bool
+ */
+function validate_no_symbols_numbers(string $field_value, array &$field)
+{
+    if (!preg_match('/^[_A-z]*((-|\s)*[_A-z])*$/', $field_value)) {
+        $field['error'] = 'Your first or last name cannot contain numbers or symbols';
+
+        return false;
+    }
 
     return true;
 }

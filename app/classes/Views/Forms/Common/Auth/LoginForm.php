@@ -20,6 +20,7 @@ class LoginForm extends Form
                     'validators' => [
                         'validate_field_not_empty',
                         'validate_email',
+                        'validate_user_doesnt_exists'
                     ],
                     'extra' => [
                         'attr' => [
@@ -33,6 +34,7 @@ class LoginForm extends Form
                     'type' => 'password',
                     'validators' => [
                         'validate_field_not_empty',
+                        'validate_correct_password'
                     ],
                     'extra' => [
                         'attr' => [

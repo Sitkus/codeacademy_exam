@@ -19,6 +19,8 @@ class RegisterForm extends Form
                         'type' => 'text',
                         'validators' => [
                             'validate_field_not_empty',
+                            'validate_name_length',
+                            'validate_no_symbols_numbers'
                         ],
                         'extra' => [
                             'attr' => [
@@ -32,6 +34,8 @@ class RegisterForm extends Form
                         'type' => 'text',
                         'validators' => [
                             'validate_field_not_empty',
+                            'validate_name_length',
+                            'validate_no_symbols_numbers'
                         ],
                         'extra' => [
                             'attr' => [
@@ -84,10 +88,13 @@ class RegisterForm extends Form
                     'phone' => [
                         'label' => 'Phone number',
                         'type' => 'number',
+                        'validators' => [
+                            'validate_numeric',
+                        ],
                         'extra' => [
                             'attr' => [
                                 'class'       => 'sign-up-in__input',
-                                'placeholder' => '+37065445347',
+                                'placeholder' => '37065445347',
                             ]
                         ]
                     ],

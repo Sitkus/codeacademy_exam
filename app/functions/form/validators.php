@@ -3,7 +3,6 @@
 use App\App;
 
 /**
- *
  * Checks if user(data) already exists in our saved file.
  *
  * If there is no such data(user) returns true.
@@ -25,8 +24,7 @@ function validate_user_unique(string $field_input, array &$field): bool
 }
 
 /**
- *
- *Checks if there is such email and password in the database.
+ * Checks if there is such email and password in the database.
  *
  * If there is such user and password is the same as in database returns true.
  * If email or password of $filtered_input are not in the database(or not the same),
@@ -45,18 +43,59 @@ function validate_login(array $filtered_input, array &$form): bool
         return true;
     }
 
-    $form['error'] = 'Incorrect';
-
     return false;
 }
 
+/**
+ * Checks if particular row exists
+ *
+ * @param string $field_input
+ * @param array $field
+ * @return bool
+ */
 function validate_row_exists(string $field_input, array &$field): bool
 {
     if (App::$db->rowExists('pizzas', $field_input)) {
         return true;
     }
 
-    $field['error'] = 'Tokia eilute neegzistuoja';
+    $field['error'] = 'Such line does not exist';
 
     return false;
+}
+
+/**
+ * Checks if user that you're trying to login even exists
+ *
+ * @param string $field_input
+ * @param array $field
+ * @return bool
+ */
+function validate_user_doesnt_exists(string $field_input, array &$field): bool
+{
+    if (!App::$db->getRowWhere('users', ['email' => $field_input])) {
+        $field['error'] = 'User with that email doesn\'t exist';
+
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * Checks if email user exists and if it's password is correct
+ *
+ * @param string $field_input
+ * @param array $field
+ * @return bool
+ */
+function validate_correct_password(string $field_input, array &$field): bool
+{
+    if (!App::$db->getRowWhere('users', ['password' => $field_input])) {
+        $field['error'] = 'Password is incorrect';
+
+        return false;
+    }
+
+    return true;
 }

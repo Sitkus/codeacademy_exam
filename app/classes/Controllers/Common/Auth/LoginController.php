@@ -15,9 +15,10 @@ class LoginController extends GuestController
     public function __construct()
     {
         parent::__construct();
+
         $this->form = new LoginForm();
         $this->page = new BasePage([
-            'title' => 'LOGIN'
+            'title' => 'Login'
         ]);
     }
 
@@ -25,15 +26,17 @@ class LoginController extends GuestController
     public function login()
     {
         if (isset($_POST['login'])) {
-            var_dump('fd');
-            return [App::$router::getUrl('login') => 'Login'];
+            return [
+                App::$router::getUrl('login') => 'Login'
+            ];
         }
 
         if ($this->form->validate()) {
             $clean_inputs = $this->form->values();
             App::$session->login($clean_inputs['email'], $clean_inputs['password']);
+
             if (App::$session->getUser()) {
-                header('Location: /index.php');
+                header('Location: /index');
                 exit();
             }
         }

@@ -10,14 +10,11 @@ Router::add('install', '/install', \App\Controllers\Common\InstallController::cl
 
 // Common Routes
 Router::add('index', '/', \App\Controllers\Common\HomeController::class);
-Router::add('index2', '/index.php', \App\Controllers\Common\HomeController::class);
+Router::add('index2', '/index', \App\Controllers\Common\HomeController::class);
 
-// Admin Routes
-Router::add('admin_orders', "/admin/orders", \App\Controllers\Admin\OrdersController::class);
-Router::add('admin_users', "/admin/users", \App\Controllers\Admin\UsersController::class);
-
-// User Routes
-Router::add('user_orders', '/my/orders', \App\Controllers\User\OrdersController::class);
+// Other page routes
+//Router::add('user_orders', '/my/orders', \App\Controllers\User\OrdersController::class);
+Router::add('reviews', '/reviews', \App\Controllers\Common\ReviewsController::class);
 
 // API Routes
 Router::add('api_pizza_get', '/api/pizza/get', \App\Controllers\Common\API\PizzaApiController::class);

@@ -20,6 +20,7 @@ html {
 }
 
 body {
+    position: relative;
     min-width: 32rem;
     color: #161616;
     overflow-x: hidden;
@@ -132,7 +133,7 @@ a {
 .sign-up-in {
     display: flex;
     flex-direction: column;
-    margin: 7rem 0;
+    margin: 7rem 0 14rem;
     background-color: #f9f9f9;
     padding: 5rem;
     max-width: 50rem;
@@ -251,9 +252,14 @@ a {
 \*------------------------------------*/
 
 .reviews {
-    margin: 5rem 0;
+    margin: 5rem 0 12rem;
     padding: 5rem;
     width: 60rem;
+}
+
+.reviews a:hover {
+    background-color: chocolate;
+    color: white;
 }
 
 .reviews__title {
@@ -262,7 +268,9 @@ a {
     font-weight: 600;
 }
 
-.table, th, td {
+.table,
+th,
+td {
     border-collapse: collapse;
     text-align: left;
 }
@@ -340,6 +348,11 @@ th {
     font-family: 'Montserrat', 'sans-serif';
     margin-top: 1rem;
     outline: none;
+    border: 1px solid #ccc;
+}
+
+.reviews__textarea:focus {
+    border: 1px solid chocolate;
 }
 
 .field-error {
@@ -359,6 +372,7 @@ th {
 
 .map {
     width: 100%;
+    margin-bottom: 7rem;
 }
 
 .map__iframe {
@@ -383,6 +397,10 @@ th {
     width: 100vw;
     background-color: #f9f9f9;
     text-align: center;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 
@@ -419,6 +437,16 @@ th {
     .service:last-child {
         margin-bottom: 0;
     }
+
+    .reviews {
+        padding: 0;
+        width: 100%;
+    }
+
+    .reviews a:last-child {
+        display: block;
+        text-align: center;
+    }
 }
 
 
@@ -432,5 +460,23 @@ th {
 @media screen and (max-width: 400px) {
     .hero {
         height: 15rem;
+    }
+
+    .header {
+        font-size: 1.4rem;
+    }
+
+    .footer {
+        font-size: 1.4rem;
+    }
+
+    .table,
+    th,
+    td {
+        padding: 1.5rem 1rem;
+    }
+
+    .table {
+        font-size: 1.4rem;
     }
 }

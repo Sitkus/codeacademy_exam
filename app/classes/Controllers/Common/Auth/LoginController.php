@@ -16,10 +16,7 @@ class LoginController extends GuestController {
 
         $this->form = new LoginForm();
         $this->page = new BasePage([
-            'title' => 'Login',
-            'content' => [
-                'title' => 'header'
-            ]
+            'title' => 'Login'
         ]);
     }
 

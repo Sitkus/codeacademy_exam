@@ -1,0 +1,61 @@
+@use '../base/typography' as *;
+@use '../abstracts/variables' as *;
+
+/*------------------------------------*\
+  # Form
+\*------------------------------------*/
+
+.sign-up-in {
+  display: flex;
+  flex-direction: column;
+  margin: 7rem 0 14rem;
+  background-color: #f9f9f9;
+  padding: 5rem;
+  max-width: 50rem;
+  width: 100%;
+}
+
+.sign-up-in__input {
+  width: 100%;
+  padding: 1.5rem;
+  margin-top: 0.7rem;
+  border: 0.1rem solid #f9f9f9;
+  outline: none;
+}
+
+.sign-up-in__input:focus {
+  border: 0.1rem solid chocolate;
+}
+
+.sign-up-in__button {
+  width: 50%;
+  align-self: center;
+  padding: 1.5rem;
+  margin-top: 2.5rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: chocolate;
+  color: white;
+  transition: 150ms all ease-in-out;
+  transform: translateY(0) scale(1);
+}
+
+.sign-up-in__button:hover {
+  background-color: darkgreen;
+}
+
+.sign-up-in__button:active {
+  transform: translateY(0.2rem) scale(1.03);
+}
+
+.sign-up-in label {
+  margin-bottom: 2.5rem;
+  color: chocolate;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+}

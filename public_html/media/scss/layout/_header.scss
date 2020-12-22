@@ -1,0 +1,66 @@
+@use '../base/typography' as *;
+@use '../abstracts/variables' as *;
+
+/*------------------------------------*\
+  # Header
+\*------------------------------------*/
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7rem;
+  width: 100%;
+  background-color: #f9f9f9;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 76rem;
+  padding: 0 2rem;
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav__side {
+  display: flex;
+}
+
+.nav__item {
+  margin-right: 4rem;
+}
+
+.nav__item:last-child {
+  margin-right: 0;
+}
+
+.nav__link {
+  color: chocolate;
+  transition: 250ms all ease-in-out;
+}
+
+.nav__link:hover {
+  color: #161616;
+}
+
+
+
+
+
+/*------------------------------------*\
+  # Media 400px
+\*------------------------------------*/
+
+@media screen and (max-width: 400px) {
+  .header {
+    font-size: 1.4rem;
+  }
+}

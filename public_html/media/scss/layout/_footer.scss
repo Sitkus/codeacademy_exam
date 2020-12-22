@@ -1,0 +1,35 @@
+@use '../base/typography' as *;
+@use '../abstracts/variables' as *;
+
+/*------------------------------------*\
+  # Footer
+\*------------------------------------*/
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 7rem;
+  width: 100vw;
+  background-color: #f9f9f9;
+  text-align: center;
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+
+
+
+
+/*------------------------------------*\
+  # Media 400px
+\*------------------------------------*/
+
+@media screen and (max-width: 400px) {
+  .footer {
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,41 @@
+@use '../base/typography' as *;
+@use '../abstracts/variables' as *;
+
+/*------------------------------------*\
+  # Default settings
+\*------------------------------------*/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $font-family;
+  font-size: 10px;
+  background-color: white;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  overflow-y: scroll;
+}
+
+body {
+  position: relative;
+  min-width: 32rem;
+  color: $black;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 1.6rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

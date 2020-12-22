@@ -1,0 +1,10 @@
+@use './base/default';
+
+@use './layout/header';
+
+@use './pages/all';
+@use './pages/home';
+@use './pages/about-us';
+@use './pages/forms';
+
+@use './layout/footer';

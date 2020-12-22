@@ -28,13 +28,12 @@ body {
 }
 
 ul {
-    list-style: none;
+    list-style-type: none;
 }
 
 a {
-    color: inherit;
     text-decoration: none;
-    cursor: pointer;
+    color: inherit;
 }
 
 
@@ -96,20 +95,6 @@ a {
 
 
 /*------------------------------------*\
-  # Main
-\*------------------------------------*/
-
-.main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-
-
-
-/*------------------------------------*\
   # Hero
 \*------------------------------------*/
 
@@ -120,6 +105,20 @@ a {
     background-repeat: no-repeat;
     width: 100vw;
     height: 30rem;
+}
+
+
+
+
+
+/*------------------------------------*\
+  # Main
+\*------------------------------------*/
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
@@ -218,11 +217,6 @@ a {
     border: 0;
     outline: 1rem solid chocolate;
     transform: scale(1.05);
-    /*transition: 250ms all ease-in-out;*/
-}
-
-.service:active {
-
 }
 
 .service__img {
@@ -245,7 +239,7 @@ a {
 }
 
 .service__description {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 
@@ -275,15 +269,15 @@ a {
     text-align: left;
 }
 
-.comment {
-    word-wrap: break-word;
-    max-width: 20rem;
-}
-
 .table {
     width: 100%;
     max-width: 50rem;
     margin-bottom: 4rem;
+}
+
+.comment {
+    word-wrap: break-word;
+    max-width: 20rem;
 }
 
 
@@ -391,7 +385,7 @@ a {
   # Media 600px
 \*------------------------------------*/
 
-@media screen and (max-width: 60rem) {
+@media screen and (max-width: 600px) {
     .services {
         flex-direction: column;
         height: 100%;
@@ -402,6 +396,12 @@ a {
     .service {
         width: 100%;
         margin-bottom: 2rem;
+    }
+
+    .service:hover {
+        border: 0;
+        outline: 0.5rem solid chocolate;
+        transform: scale(1.02);
     }
 
     .service__bottom {
@@ -421,24 +421,8 @@ a {
   # Media 400px
 \*------------------------------------*/
 
-@media screen and (max-width: 40rem) {
-    .services {
-        flex-direction: column;
-        height: 100%;
-        padding: 0 2rem;
-        margin: 6rem 0;
-    }
-
-    .service {
-        width: 100%;
-        margin-bottom: 2rem;
-    }
-
-    .service__bottom {
-        align-self: center;
-    }
-
-    .service:last-child {
-        margin-bottom: 0;
+@media screen and (max-width: 400px) {
+    .hero {
+        height: 15rem;
     }
 }

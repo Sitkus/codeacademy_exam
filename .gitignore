@@ -1,0 +1,19 @@
+# Docker
+build
+docker-compose.yml
+Makefile
+
+#Mac
+.DS_Store
+
+#PHP storm
+.idea
+
+#Data
+db.json
+
+#vendor
+vendor
+
+#Composer
+composer.lock

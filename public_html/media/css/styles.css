@@ -263,15 +263,23 @@ a {
 }
 
 .table, th, td {
-    border: 0.1rem solid #161616;
     border-collapse: collapse;
-    padding: 1rem 1.5rem;
     text-align: left;
+}
+
+td {
+    border-bottom: 1px solid #ccc;
+    padding: 2rem 1.5rem;
+}
+
+th {
+    padding: 2rem 1.5rem;
+    border-bottom: 1px solid #ccc;
 }
 
 .table {
     width: 100%;
-    max-width: 50rem;
+    max-width: 60rem;
     margin-bottom: 4rem;
 }
 

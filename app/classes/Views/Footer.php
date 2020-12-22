@@ -7,7 +7,7 @@ use Core\View;
 class Footer extends View {
     public function __construct() {
         parent::__construct([
-            'footer' => '&copy; ' . Date('Y') . '. Lukas Šitkus, all rights reserved.'
+            'footer' => '&copy; ' . date('Y') . '. Lukas Šitkus, all rights reserved.'
         ]);
     }
 

@@ -9,7 +9,7 @@ class ReviewBaseForm extends Form {
         parent::__construct([
             'fields' => [
                 'comment' => [
-                    'label' => 'Comment',
+                    'label' => 'Leave review',
                     'type'  => 'textarea',
                     'validators' => [
                         'validate_field_not_empty',
@@ -18,7 +18,7 @@ class ReviewBaseForm extends Form {
                     'extra' => [
                         'attr' => [
                             'class'       => 'reviews__textarea',
-                            'placeholder' => 'Enter your comments here'
+                            'placeholder' => 'Type in your review...'
                         ],
                     ],
                 ],

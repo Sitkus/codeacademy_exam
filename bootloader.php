@@ -1,5 +1,9 @@
 <?php
 
+// Time zone
+date_default_timezone_set('Europe/Vilnius');
+
+// Global constants
 define('ROOT', __DIR__);
 define('DB_FILE', ROOT . '/app/data/db.json');
 
@@ -10,8 +14,10 @@ require 'app/functions/form/validators.php';
 require 'core/functions/html.php';
 require 'core/functions/form/validators.php';
 
-//Composer
+// Composer
 require 'vendor/autoload.php';
+
+// Router
 require 'app/config/routes.php';
 
 

@@ -167,10 +167,6 @@ const table = {
         if (this.getElement()) {
             this.data.load();
 
-            Object.keys(this.buttons).forEach(buttonId => {
-                let success = table.buttons[buttonId].init();
-            });
-
             return true;
         }
 
@@ -233,6 +229,7 @@ const table = {
                             td.append(btn);
                             row.append(td);
                         });
+
                         break;
                     default:
                         let td = document.createElement('td');
@@ -253,7 +250,7 @@ const table = {
          */
         append: function (data) {
             table.getElement().append(this.build(data));
-        },
+        }
     }
 };
 

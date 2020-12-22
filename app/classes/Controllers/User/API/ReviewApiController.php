@@ -16,15 +16,23 @@ class ReviewApiController extends AuthController {
         $form = new ReviewCreateForm();
 
         if ($form->validate()) {
-            $user = App::$session->getUser();
+            $current_user = App::$session->getUser();
+            $users = App::$db->getRowsWhere('users');
+
+            foreach ($users as $id => $user) {
+                if ($current_user['email'] === $user['email']) {
+                    $user_id = $id;
+                }
+            }
 
             $reviews = $form->values();
             $reviews['id'] = App::$db->insertRow('reviews', $form->values() + [
-                    'name'      => $user['firstname'],
-                    'timestamp' => time()
+                    'name'    => $current_user['firstname'],
+                    'user_id' => $user_id,
+                    'time'    => $this->timeFormat(time())
                 ]);
 
-            $reviews = $this->buildRow($user, $reviews);
+            $reviews = $this->buildRow($current_user, $reviews);
             $response->setData($reviews);
         } else {
             $response->setErrors($form->getErrors());
@@ -58,24 +66,6 @@ class ReviewApiController extends AuthController {
      * @return string
      */
     private function timeFormat($time) {
-        $timeStamp = date('Y-m-d H:i:s', $time);
-        $difference = abs(strtotime("now") - strtotime($timeStamp));
-        $days = floor($difference / (3600 * 24));
-        $hours = floor($difference / 3600);
-        $minutes = floor(($difference - ($hours * 3600)) / 60);
-        $seconds = floor($difference % 60);
-
-        if ($days) {
-            $hours = $hours - 24;
-            $result = "{$days}d {$hours}:{$minutes} H";
-        } elseif ($minutes) {
-            $result = "{$minutes} min";
-        } elseif ($hours) {
-            $result = "{$hours}:{$minutes} H";
-        } else {
-            $result = "{$seconds} sec";
-        }
-
-        return $result;
+        return date('Y-m-d H:i', $time);
     }
 }

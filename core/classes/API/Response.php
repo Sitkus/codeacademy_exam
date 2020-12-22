@@ -1,9 +1,9 @@
 <?php
 
-namespace Core\Api;
+namespace Core\API;
 
-class Response
-{
+class Response {
+
     /**
      * Contains all response data
      * @var array
@@ -16,8 +16,7 @@ class Response
      */
     private $errors = [];
 
-    public function __construct($data = [])
-    {
+    public function __construct($data = []) {
         if ($data) {
             $this->setData($data['data'] ?? []);
             $this->setErrors($data['errors'] ?? []);
@@ -27,8 +26,7 @@ class Response
     /**
      * Prints response
      */
-    public function toJson(): string
-    {
+    public function toJson(): string {
         $is_success = $this->errors ? false : true;
 
         return json_encode([
@@ -38,13 +36,11 @@ class Response
         ]);
     }
 
-    public function setData($data)
-    {
+    public function setData($data) {
         $this->data = $data;
     }
 
-    public function appendData($body, $index = null)
-    {
+    public function appendData($body, $index = null) {
         if ($index) {
             $this->data[$index] = $body;
         } else {
@@ -52,18 +48,15 @@ class Response
         }
     }
 
-    public function setErrors($errors)
-    {
+    public function setErrors($errors) {
         $this->errors = $errors;
     }
 
-    public function appendError($body, $index = null)
-    {
+    public function appendError($body, $index = null) {
         if ($index) {
             $this->errors[$index] = $body;
         } else {
             $this->errors[] = $body;
         }
     }
-
 }

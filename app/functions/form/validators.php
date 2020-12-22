@@ -12,8 +12,7 @@ use App\App;
  * @param array $field - input array
  * @return bool
  */
-function validate_user_unique(string $field_input, array &$field): bool
-{
+function validate_user_unique(string $field_input, array &$field): bool {
     if (App::$db->getRowWhere('users', ['email' => $field_input])) {
         $field['error'] = 'User already exists';
 
@@ -34,8 +33,7 @@ function validate_user_unique(string $field_input, array &$field): bool
  * @param array $form - form array
  * @return bool
  */
-function validate_login(array $filtered_input, array &$form): bool
-{
+function validate_login(array $filtered_input, array &$form): bool {
     if (App::$db->getRowWhere('users', [
         'email' => $filtered_input['email'],
         'password' => $filtered_input['password']
@@ -47,32 +45,13 @@ function validate_login(array $filtered_input, array &$form): bool
 }
 
 /**
- * Checks if particular row exists
- *
- * @param string $field_input
- * @param array $field
- * @return bool
- */
-function validate_row_exists(string $field_input, array &$field): bool
-{
-    if (App::$db->rowExists('pizzas', $field_input)) {
-        return true;
-    }
-
-    $field['error'] = 'Such line does not exist';
-
-    return false;
-}
-
-/**
  * Checks if user that you're trying to login even exists
  *
  * @param string $field_input
  * @param array $field
  * @return bool
  */
-function validate_user_doesnt_exists(string $field_input, array &$field): bool
-{
+function validate_user_doesnt_exists(string $field_input, array &$field): bool {
     if (!App::$db->getRowWhere('users', ['email' => $field_input])) {
         $field['error'] = 'User with that email doesn\'t exist';
 
@@ -89,8 +68,7 @@ function validate_user_doesnt_exists(string $field_input, array &$field): bool
  * @param array $field
  * @return bool
  */
-function validate_correct_password(string $field_input, array &$field): bool
-{
+function validate_correct_password(string $field_input, array &$field): bool {
     if (!App::$db->getRowWhere('users', ['password' => $field_input])) {
         $field['error'] = 'Password is incorrect';
 

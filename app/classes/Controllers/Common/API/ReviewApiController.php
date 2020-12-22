@@ -1,16 +1,12 @@
 <?php
 
-
 namespace App\Controllers\Common\API;
 
-
 use App\App;
-use Core\Api\Response;
+use Core\API\Response;
 
-class ReviewApiController
-{
-    public function index(): string
-    {
+class ReviewApiController {
+    public function index(): string {
         $response = new Response();
         $reviews = App::$db->getRowsWhere('reviews');
 
@@ -29,8 +25,7 @@ class ReviewApiController
      * @param $row
      * @return string
      */
-    private function timeFormat($row)
-    {
+    private function timeFormat($row) {
         $timeStamp = date('Y-m-d H:i:s', $row['timestamp']);
 
         $difference = abs(strtotime("now") - strtotime($timeStamp));
@@ -60,8 +55,7 @@ class ReviewApiController
      * @param $reviews
      * @return mixed
      */
-    private function buildRows($reviews)
-    {
+    private function buildRows($reviews) {
         foreach ($reviews as $id => &$row) {
             $row = [
                 'id' => $id,

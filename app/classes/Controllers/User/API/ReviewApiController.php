@@ -7,10 +7,9 @@ use App\Controllers\Base\API\AuthController;
 use App\Views\Forms\Review\ReviewCreateForm;
 use Core\Api\Response;
 
-class ReviewApiController extends AuthController
-{
-    public function create(): string
-    {
+class ReviewApiController extends AuthController {
+    public function create(): string {
+
         // This is a helper class to make sure
         // we use the same API json response structure
         $response = new Response();
@@ -30,6 +29,7 @@ class ReviewApiController extends AuthController
         } else {
             $response->setErrors($form->getErrors());
         }
+
         // Returns json-encoded response
         return $response->toJson();
     }
@@ -42,8 +42,7 @@ class ReviewApiController extends AuthController
      * @param $review
      * @return array
      */
-    private function buildRow($user, $review): array
-    {
+    private function buildRow($user, $review): array {
         return $row = [
             'id' => $review['id'],
             'name' => $user['firstname'],
@@ -58,14 +57,14 @@ class ReviewApiController extends AuthController
      * @param $time
      * @return string
      */
-    private function timeFormat($time)
-    {
+    private function timeFormat($time) {
         $timeStamp = date('Y-m-d H:i:s', $time);
         $difference = abs(strtotime("now") - strtotime($timeStamp));
         $days = floor($difference / (3600 * 24));
         $hours = floor($difference / 3600);
         $minutes = floor(($difference - ($hours * 3600)) / 60);
         $seconds = floor($difference % 60);
+
         if ($days) {
             $hours = $hours - 24;
             $result = "{$days}d {$hours}:{$minutes} H";
@@ -76,6 +75,7 @@ class ReviewApiController extends AuthController
         } else {
             $result = "{$seconds} sec";
         }
+
         return $result;
     }
 }

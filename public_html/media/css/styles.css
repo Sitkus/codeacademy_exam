@@ -2,7 +2,7 @@
   # Default settings
 \*------------------------------------*/
 
-* {
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -10,12 +10,21 @@
 
 html {
     font-family: 'Montserrat', 'sans-serif';
+    font-size: 10px;
+    background-color: white;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    overflow-y: scroll;
 }
 
 body {
-    background-color: white;
-    overflow-x: hidden;
+    min-width: 32rem;
     color: #161616;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 1.6rem;
 }
 
 ul {
@@ -40,7 +49,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70px;
+    height: 7rem;
     width: 100%;
     background-color: #f9f9f9;
 }
@@ -50,8 +59,8 @@ a {
     justify-content: center;
     height: 100%;
     width: 100%;
-    max-width: 760px;
-    padding: 0 20px;
+    max-width: 76rem;
+    padding: 0 2rem;
 }
 
 .nav__list {
@@ -66,7 +75,7 @@ a {
 }
 
 .nav__item {
-    margin-right: 40px;
+    margin-right: 4rem;
 }
 
 .nav__item:last-child {
@@ -110,7 +119,7 @@ a {
     background-position: center center;
     background-repeat: no-repeat;
     width: 100vw;
-    height: 300px;
+    height: 30rem;
 }
 
 
@@ -124,36 +133,37 @@ a {
 .sign-up-in {
     display: flex;
     flex-direction: column;
-    margin: 70px 0;
+    margin: 7rem 0;
     background-color: #f9f9f9;
-    padding: 50px;
-    max-width: 500px;
+    padding: 5rem;
+    max-width: 50rem;
     width: 100%;
 }
 
 .sign-up-in__input {
     width: 100%;
-    padding: 15px;
-    margin-top: 7px;
-    border: 1px solid #f9f9f9;
+    padding: 1.5rem;
+    margin-top: 0.7rem;
+    border: 0.1rem solid #f9f9f9;
     outline: none;
 }
 
 .sign-up-in__input:focus {
-    border: 1px solid chocolate;
+    border: 0.1rem solid chocolate;
 }
 
 .sign-up-in__button {
     width: 50%;
     align-self: center;
-    padding: 15px;
-    margin-top: 25px;
+    padding: 1.5rem;
+    margin-top: 2.5rem;
     cursor: pointer;
     outline: none;
     border: none;
     background-color: chocolate;
     color: white;
     transition: 150ms all ease-in-out;
+    transform: translateY(0) scale(1);
 }
 
 .sign-up-in__button:hover {
@@ -161,19 +171,18 @@ a {
 }
 
 .sign-up-in__button:active {
-    transform: translateY(2px) scale(1.05);
+    transform: translateY(0.2rem) scale(1.03);
 }
 
-
 .sign-up-in label {
-    margin-bottom: 25px;
+    margin-bottom: 2.5rem;
     color: chocolate;
 }
 
 .error {
     color: red;
-    margin-top: 10px;
-    font-size: 14px;
+    margin-top: 1rem;
+    font-size: 1.4rem;
 }
 
 
@@ -188,17 +197,32 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 400px;
+    height: 40rem;
     width: 100%;
-    max-width: 800px;
-    margin: 20px 0;
+    max-width: 80rem;
+    margin: 2rem 0;
 }
 
 .service {
-    height: 250px;
+    height: 25rem;
     width: 25%;
-    border: 1px solid #ccc;
+    border: 0.1rem solid #ccc;
     text-align: center;
+    cursor: pointer;
+    outline: 0 solid white;
+    transform: scale(1);
+    transition: 350ms all ease-in-out;
+}
+
+.service:hover {
+    border: 0;
+    outline: 1rem solid chocolate;
+    transform: scale(1.05);
+    /*transition: 250ms all ease-in-out;*/
+}
+
+.service:active {
+
 }
 
 .service__img {
@@ -211,18 +235,17 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*height: 60%;*/
-    padding: 5px;
+    padding: 0.5rem;
 }
 
 .service__title {
     font-weight: 600;
-    font-size: 18px;
-    margin: 10px 0 10px;
+    font-size: 1.8rem;
+    margin: 1rem 0 1rem;
 }
 
 .service__description {
-    font-size: 15px;
+    font-size: 1.5rem;
 }
 
 
@@ -234,33 +257,33 @@ a {
 \*------------------------------------*/
 
 .reviews {
-    margin: 50px 0;
-    padding: 50px;
-    width: 600px;
+    margin: 5rem 0;
+    padding: 5rem;
+    width: 60rem;
 }
 
 .reviews__title {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
     text-align: center;
     font-weight: 600;
 }
 
 .table, th, td {
-    border: 1px solid #161616;
+    border: 0.1rem solid #161616;
     border-collapse: collapse;
-    padding: 10px 15px;
+    padding: 1rem 1.5rem;
     text-align: left;
 }
 
 .comment {
     word-wrap: break-word;
-    max-width: 200px;
+    max-width: 20rem;
 }
 
 .table {
     width: 100%;
-    max-width: 500px;
-    margin-bottom: 40px;
+    max-width: 50rem;
+    margin-bottom: 4rem;
 }
 
 
@@ -281,21 +304,22 @@ a {
 }
 
 #review-create-form label {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
     font-weight: 500;
 }
 
 #review-create-form button {
     width: 50%;
     align-self: center;
-    padding: 15px;
-    margin-top: 25px;
+    padding: 1.5rem;
+    margin-top: 2.5rem;
     cursor: pointer;
     outline: none;
     border: none;
     background-color: chocolate;
     color: white;
     transition: 150ms all ease-in-out;
+    transform: translateY(0) scale(1);
 }
 
 #review-create-form button:hover {
@@ -303,22 +327,22 @@ a {
 }
 
 #review-create-form button:active {
-    transform: translateY(2px) scale(1.05);
+    transform: translateY(0.2rem) scale(1.03);
 }
 
 .reviews__textarea {
     width: 100%;
-    height: 150px;
+    height: 15rem;
     resize: vertical;
-    padding: 10px 15px;
+    padding: 1rem 1.5rem;
     font-family: 'Montserrat', 'sans-serif';
-    margin-top: 10px;
+    margin-top: 1rem;
     outline: none;
 }
 
 .field-error {
     display: block;
-    margin-top: 10px;
+    margin-top: 1rem;
     color: red;
     font-weight: 400;
 }
@@ -337,7 +361,7 @@ a {
 
 .map__iframe {
     width: 100%;
-    height: 300px;
+    height: 30rem;
 }
 
 
@@ -353,7 +377,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 70px;
+    height: 7rem;
     width: 100vw;
     background-color: #f9f9f9;
     text-align: center;
@@ -364,23 +388,50 @@ a {
 
 
 /*------------------------------------*\
-  # Media @400
+  # Media 600px
 \*------------------------------------*/
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 60rem) {
     .services {
         flex-direction: column;
-        /*align-items: center;*/
-        /*justify-content: center;*/
         height: 100%;
-        padding: 0 20px;
-        margin: 60px 0;
+        padding: 0 2rem;
+        margin: 6rem 0;
     }
 
     .service {
-        /*height: 200px;*/
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 2rem;
+    }
+
+    .service__bottom {
+        align-self: center;
+    }
+
+    .service:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+
+
+
+/*------------------------------------*\
+  # Media 400px
+\*------------------------------------*/
+
+@media screen and (max-width: 40rem) {
+    .services {
+        flex-direction: column;
+        height: 100%;
+        padding: 0 2rem;
+        margin: 6rem 0;
+    }
+
+    .service {
+        width: 100%;
+        margin-bottom: 2rem;
     }
 
     .service__bottom {

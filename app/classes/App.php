@@ -6,15 +6,12 @@ use Core\FileDB;
 use Core\Router;
 use Core\Session;
 
-
-class App
-{
+class App {
     public static FileDB $db;
     public static Session $session;
     public static Router $router;
 
-    public function __construct()
-    {
+    public function __construct() {
         self::$db = new FileDB(DB_FILE);
         self::$db->load();
 
@@ -22,13 +19,11 @@ class App
         self::$router = new Router();
     }
 
-    public function run()
-    {
+    public function run() {
         print self::$router::run();
     }
 
-    public function __destruct()
-    {
+    public function __destruct() {
         self::$db->save();
     }
 }

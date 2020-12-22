@@ -1,14 +1,12 @@
 <?php
 
 /**
- * Iš duoto duomenų masyvo sukuria atributus
- * deklaruojantį tekstą HTML elementui. (pavadinimas="vertė")
+ * Creates html attributes from a given array
  *
- * @param array $attr masyvas HTML atributų porų.
- * @return string HTML atributai.
+ * @param array $attr
+ * @return string
  */
-function html_attr(array $attr): string
-{
+function html_attr(array $attr): string {
     $attribute_string = '';
 
     foreach ($attr as $name => $value) {
@@ -19,31 +17,25 @@ function html_attr(array $attr): string
 }
 
 /**
- * Funkcija kuri išspausdina formos tago atributus
+ * Prints for attributes as string
  *
  * @param $form
  * @return string
  */
-function form_attr($form)
-{
+function form_attr($form) {
     return html_attr($form['attr'] ?? [] + [
             'method' => 'POST'
         ]);
 }
 
 /**
- * Iš duoto duomenų masyvo sukuria atributus
- * deklaruojantį tekstą skirtą HTML input elementui.
+ * Returns string of input attributes
  *
- * Sumuojami atributai yra name, type, value ir visi likę
- * atributai iš $field['extra']['attr'] masyvo.
- *
- * @param string $field_name HTML input'o pavadinimas.
- * @param array $field masyvas HTML input atributų.
- * @return string input elemento atributai.
+ * @param string $field_name
+ * @param array $field
+ * @return string
  */
-function input_attr(string $field_name, array $field): string
-{
+function input_attr(string $field_name, array $field): string {
     $attributes = [
             'name' => $field_name,
             'type' => $field['type'],
@@ -54,15 +46,13 @@ function input_attr(string $field_name, array $field): string
 }
 
 /**
- * Iš duoto duomenų masyvo sukuria atributus
- * deklaruojantį tekstą HTML button elementui.
+ * Make button attributes as a string
  *
- * @param string $button_id HTML button'o value atributas.
- * @param array $button masyvas HTML button atributų.
- * @return string input elemento atributai.
+ * @param string $button_id
+ * @param array $button
+ * @return string
  */
-function button_attr(string $button_id, array $button): string
-{
+function button_attr(string $button_id, array $button): string {
     $attributes = [
             'name' => 'action',
             'type' => $button['type'] ?? 'submit',
@@ -72,8 +62,14 @@ function button_attr(string $button_id, array $button): string
     return html_attr($attributes);
 }
 
-function select_attr(string $field_id, array $field): string
-{
+/**
+ * Returns string of select attributes
+ *
+ * @param string $field_id
+ * @param array $field
+ * @return string
+ */
+function select_attr(string $field_id, array $field): string {
     $attributes = [
             'name' => $field_id,
             'value' => $field['value'],
@@ -82,8 +78,14 @@ function select_attr(string $field_id, array $field): string
     return html_attr($attributes);
 }
 
-function option_attr(string $option_id, array $option): string
-{
+/**
+ * Returns attributes for options
+ *
+ * @param string $option_id
+ * @param array $option
+ * @return string
+ */
+function option_attr(string $option_id, array $option): string {
     $attributes = [
         'value' => $option_id,
     ];
@@ -102,8 +104,7 @@ function option_attr(string $option_id, array $option): string
  * @param array $textarea
  * @return string
  */
-function textarea_attr(string $textarea_id, array $textarea): string
-{
+function textarea_attr(string $textarea_id, array $textarea): string {
     $attributes = [
             'name' => $textarea_id,
             'rows' => $textarea['rows'] ?? 5, // could be specified in CSS

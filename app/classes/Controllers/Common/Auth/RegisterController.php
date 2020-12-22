@@ -7,13 +7,11 @@ use App\Controllers\Base\GuestController;
 use App\Views\BasePage;
 use App\Views\Forms\Common\Auth\RegisterForm;
 
-class RegisterController extends GuestController
-{
+class RegisterController extends GuestController {
     protected RegisterForm $form;
     protected BasePage $page;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->form = new RegisterForm();
@@ -21,8 +19,14 @@ class RegisterController extends GuestController
             'title' => 'Register'
         ]);
     }
-    public function register()
-    {
+
+    /**
+     * Register user
+     *
+     * @return false|string
+     * @throws \Exception
+     */
+    public function register() {
         if ($this->form->validate()) {
             $clean_inputs = $this->form->values();
             unset($clean_inputs['password_repeat']);

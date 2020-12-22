@@ -9,19 +9,21 @@ use App\Views\Tables\User\ReviewTable;
 use Core\View;
 use Core\Views\Link;
 
-class AboutUsController
-{
+class AboutUsController {
     protected BasePage $page;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->page = new BasePage([
             'title' => 'About Us',
-            'js' => ['/media/js/user/review.js']
+            'js' => ['/media/js/review.js']
         ]);
     }
-    public function index(): ?string
-    {
+
+    /**
+     * @return string|null
+     * @throws \Exception
+     */
+    public function index(): ?string {
         $user = App::$session->getUser();
 
         if ($user) {

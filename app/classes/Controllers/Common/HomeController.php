@@ -9,8 +9,7 @@ use App\Views\Forms\Admin\OrderCreateForm;
 use Core\View;
 use App\Views\Content\HomeContent;
 
-class HomeController
-{
+class HomeController {
     protected $page;
 
     /**
@@ -19,14 +18,9 @@ class HomeController
      * We can write logic common for all
      * other methods
      *
-     * For example, create $page object,
-     * set it's header/navigation
-     * or check if user has a proper role
-     *
      * Goal is to prepare $page
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->page = new BasePage([
             'title' => 'Home',
         ]);
@@ -38,8 +32,7 @@ class HomeController
      * @return string|null
      * @throws \Exception
      */
-    public function index(): ?string
-    {
+    public function index(): ?string {
         $content = (new View([
             'forms' => $forms ?? [],
             'links' => $links ?? []

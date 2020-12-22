@@ -1,4 +1,5 @@
 <form <?php print form_attr($data); ?>>
+
     <?php foreach ($data['fields'] as $field_id => $field): ?>
         <?php if (isset($field['label'])): ?>
             <label>
@@ -23,11 +24,13 @@
         <?php endif; ?>
         </label>
     <?php endforeach; ?>
+
     <?php foreach ($data['buttons'] as $button_id => $button): ?>
         <button <?php print button_attr($button_id, $button); ?>>
             <?php print $button['title']; ?>
         </button>
     <?php endforeach; ?>
+
     <?php if (isset($data['error'])): ?>
         <p class="error"><?php print $data['error']; ?></p>
     <?php endif; ?>

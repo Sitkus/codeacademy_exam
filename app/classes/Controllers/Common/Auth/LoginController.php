@@ -7,24 +7,29 @@ use App\Controllers\Base\GuestController;
 use App\Views\BasePage;
 use App\Views\Forms\Common\Auth\LoginForm;
 
-class LoginController extends GuestController
-{
+class LoginController extends GuestController {
     protected $form;
     protected $page;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->form = new LoginForm();
         $this->page = new BasePage([
-            'title' => 'Login'
+            'title' => 'Login',
+            'content' => [
+                'title' => 'header'
+            ]
         ]);
     }
 
-
-    public function login()
-    {
+    /**
+     * Login user
+     *
+     * @return false|string|string[]
+     * @throws \Exception
+     */
+    public function login() {
         if (isset($_POST['login'])) {
             return [
                 App::$router::getUrl('login') => 'Login'
@@ -43,6 +48,5 @@ class LoginController extends GuestController
 
         $this->page->setContent($this->form->render());
         return $this->page->render();
-
     }
 }

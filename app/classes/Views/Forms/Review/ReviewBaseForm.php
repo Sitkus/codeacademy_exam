@@ -4,8 +4,7 @@ namespace App\Views\Forms\Review;
 
 use Core\Views\Form;
 
-class ReviewBaseForm extends Form
-{
+class ReviewBaseForm extends Form {
     public function __construct() {
         parent::__construct([
             'fields' => [
@@ -13,7 +12,8 @@ class ReviewBaseForm extends Form
                     'label' => 'Comment',
                     'type'  => 'textarea',
                     'validators' => [
-                        'validate_field_not_empty'
+                        'validate_field_not_empty',
+                        'validate_textarea_length'
                     ],
                     'extra' => [
                         'attr' => [

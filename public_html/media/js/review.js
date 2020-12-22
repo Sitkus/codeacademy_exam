@@ -2,7 +2,7 @@
 
 const endpoints = {
     get: '/api/reviews/get',
-    create: '/api/reviews/create',
+    create: '/api/reviews/create'
 };
 
 /**
@@ -17,6 +17,7 @@ const selectors = {
 
 /**
  * Executes API request
+ *
  * @param {type} url Endpoint URL
  * @param {type} formData instance of FormData
  * @param {type} success Success callback
@@ -51,6 +52,7 @@ function api(url, formData, success, fail) {
  * Object forms
  */
 const forms = {
+
     /**
      * Create Form
      */
@@ -58,77 +60,55 @@ const forms = {
         init: function () {
             if (this.getElement()) {
                 this.getElement().addEventListener('submit', this.onSubmitListener);
+
                 return true;
             }
+
             return false;
         },
         getElement: function () {
             return document.getElementById(selectors.forms.create);
-        }
-        ,
+        },
         onSubmitListener: function (e) {
-            e.preventDefault();
             let formData = new FormData(e.target);
             formData.append('action', 'create');
+
             api(endpoints.create, formData, forms.create.success, forms.create.fail);
-        }
-        ,
+
+            e.preventDefault();
+        },
         success: function (data) {
             const element = forms.create.getElement();
+
             table.row.append(data);
             forms.ui.errors.hide(element);
             forms.ui.clear(element);
             forms.ui.flash.class(element, 'success');
-        }
-        ,
+        },
         fail: function (errors) {
             forms.ui.errors.show(forms.create.getElement(), errors);
         }
     },
+
     /**
      * Common/Universal Form UI Functions
      */
     ui: {
         init: function () {
-            // Function has to exist
-            // since we're calling init() for
-            // all elements withing forms object
             return true;
         },
-
-        /**
-         * Fills form fields with data
-         * Each data index corelates with input name attribute
-         *
-         * @param {Element} form
-         * @param {Object} data
-         */
-        fill: function (form, data) {
-            console.log('Filling form fields with:', data);
-            form.setAttribute('data-id', data.id);
-            Object.keys(data).forEach(data_id => {
-                if (form[data_id]) {
-                    const input = form.querySelector('input[name="' + data_id + '"]');
-                    if (input) {
-                        input.value = data[data_id];
-                    } else {
-                        console.log('Could not fill field ' + data_id + 'because it wasn`t found in form');
-                    }
-                }
-            });
-        }
-        ,
         clear: function (form) {
-            let fields = form.querySelectorAll('[name]')
+            let fields = form.querySelectorAll('[name]');
+
             fields.forEach(field => {
                 field.value = '';
             });
-        }
-        ,
+        },
         flash:
             function (element, class_name) {
                 const prev = element.className;
                 element.className += class_name;
+
                 setTimeout(function () {
                     element.className = prev;
                 }, 1000);
@@ -138,6 +118,7 @@ const forms = {
          * Form-error related functionality
          */
         errors: {
+
             /**
              * Shows errors in form
              * Each error index correlates with input name attribute
@@ -147,19 +128,18 @@ const forms = {
              */
             show: function (form, errors) {
                 this.hide(form);
-                console.log('Form errors received', errors);
+
                 Object.keys(errors).forEach(function (error_id) {
                     const field = form.querySelector('textarea[name="' + error_id + '"]');
+
                     if (field) {
                         const span = document.createElement("span");
                         span.className = 'field-error';
                         span.innerHTML = errors[error_id];
                         field.parentNode.append(span);
-                        console.log('Form error in field: ' + error_id + ':' + errors[error_id]);
                     }
                 });
-            }
-            ,
+            },
             /**
              * Hides (destroys) all errors in form
              * @param {type} form
@@ -189,7 +169,6 @@ const table = {
 
             Object.keys(this.buttons).forEach(buttonId => {
                 let success = table.buttons[buttonId].init();
-                console.log('Setting up button listeners "' + buttonId + '": ' + (success ? 'PASS' : 'FAIL'));
             });
 
             return true;
@@ -207,7 +186,6 @@ const table = {
          * @returns {undefined}
          */
         load: function () {
-            console.log('table: Calling API to get data...');
             api(endpoints.get, null, this.success, this.fail);
         },
         success: function (data) {
@@ -224,6 +202,7 @@ const table = {
      * Operations with items
      */
     row: {
+
         /**
          * Builds item element from data
          *
@@ -266,20 +245,15 @@ const table = {
             });
             return row;
         },
+
         /**
          * Appends item to table from data
          *
          * @param {Object} data
          */
         append: function (data) {
-            console.log('table: Creating row in table container from ', data);
             table.getElement().append(this.build(data));
         },
-    },
-
-    // Buttons are declared on whole table, not on each item individually, so
-    // onClickListeners dont duplicate
-    buttons: {
     }
 };
 
@@ -288,16 +262,15 @@ const table = {
  */
 const app = {
     init: function () {
+
         // Initialize all forms
         Object.keys(forms).forEach(formId => {
             let success = forms[formId].init();
-            console.log('Initializing form "' + formId + '": ' + (success ? 'SUCCESS' : 'FAIL'));
         });
-        console.log('Initializing table...');
+
         let success = table.init();
-        console.log('table: Initialization: ' + (success ? 'PASS' : 'FAIL'));
     }
 };
 
-// Launch App
+// Self-launch App
 app.init();

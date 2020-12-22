@@ -5,16 +5,12 @@ namespace App\Views;
 use App\App;
 use Core\View;
 
-class Navigation extends View
-{
-
-    public function __construct()
-    {
+class Navigation extends View {
+    public function __construct() {
         parent::__construct($this->generate());
     }
 
-    public function generate()
-    {
+    public function generate() {
         $nav = [
             'left' => [
                 App::$router::getUrl('index') => 'Home',
@@ -38,8 +34,7 @@ class Navigation extends View
             ];
     }
 
-    public function render($template_path = ROOT . '/app/templates/nav.tpl.php')
-    {
+    public function render($template_path = ROOT . '/app/templates/nav.tpl.php') {
         return parent::render($template_path);
     }
 }

@@ -2,8 +2,7 @@
 
 namespace Core\Abstracts;
 
-abstract class Router
-{
+abstract class Router {
     /**
      * This is the array where we will add routes, it will look like this:
      * $this->routes = [

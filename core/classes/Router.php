@@ -2,30 +2,10 @@
 
 namespace Core;
 
-class Router extends \Core\Abstracts\Router
-{
+class Router extends \Core\Abstracts\Router {
+    protected static  $routes = [];
 
     /**
-     * This is the array where we will add routes, it will look like this:
-     * $this->routes = [
-     *  'login' => [
-     *      'url' => '/users/login',
-     *      'controller_name' => '\App\Controllers\Auth\LoginController',
-     *      'controller_method' => 'index',
-     *  ],
-     *  ...
-     * ]
-     *
-     * @var array
-     */
-    protected static  $routes = [];
-    /**
-     * We will call this as follows:
-     * Router::add('login', '/login', '\App\Controllers\Auth\LoginController', 'index')
-     * ^ all route::add code should be included in app\config\routes.php
-     * routes.php should be included immediately after classes autoload,
-     * before new App() in bootloader
-     *
      * Goal is to add entry to $this->routes
      * with the following information:
      *
@@ -42,8 +22,7 @@ class Router extends \Core\Abstracts\Router
      *
      * @return mixed
      */
-    public static function add(string $name, string $url, string $controller_name, string $controller_method = 'index'): void
-    {
+    public static function add(string $name, string $url, string $controller_name, string $controller_method = 'index'): void {
         self::$routes[$name] = [
             'url' => $url,
             'controller_name' => $controller_name,
@@ -58,8 +37,7 @@ class Router extends \Core\Abstracts\Router
      * @param string $controller_name Controller class name, ex.: \App\Controllers\HomeController
      * @return mixed Controller Object
      */
-    protected static function getControllerInstance(string $controller_name)
-    {
+    protected static function getControllerInstance(string $controller_name) {
         return  new $controller_name;
 
     }
@@ -71,8 +49,7 @@ class Router extends \Core\Abstracts\Router
      * @param $url
      * @return null|array
      */
-    protected static function getRouteByUrl($url): ?array
-    {
+    protected static function getRouteByUrl($url): ?array {
         $url_path = parse_url($url, PHP_URL_PATH);
         foreach (self::$routes as $route) {
             if ($route['url'] == $url_path) {
@@ -91,8 +68,7 @@ class Router extends \Core\Abstracts\Router
      * @param $name
      * @return string|null
      */
-    public static function getUrl($name): ?string
-    {
+    public static function getUrl($name): ?string {
         return self::$routes[$name]['url'] ?? null;
 
     }
@@ -108,8 +84,7 @@ class Router extends \Core\Abstracts\Router
      *
      * @return string HTML
      */
-    public static function run(): ?string
-    {
+    public static function run(): ?string {
         $route = self::getRouteByUrl($_SERVER['REQUEST_URI']);
         if ($route) {
             $controller = self::getControllerInstance($route['controller_name']);
@@ -119,5 +94,4 @@ class Router extends \Core\Abstracts\Router
         header("HTTP/1.0 404 Not Found");
         exit();
     }
-
 }

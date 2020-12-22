@@ -5,15 +5,13 @@ namespace Core\Views;
 use Core\View;
 use Exception;
 
-class Form extends View
-{
+class Form extends View {
     /**
      * Retrieve all form input values
      *
      * @return array|null
      */
-    public function values(): ?array
-    {
+    public function values(): ?array {
         $parameters = [];
 
         foreach ($this->data['fields'] as $key => $input) {
@@ -29,8 +27,7 @@ class Form extends View
      * @param $field_id
      * @return mixed
      */
-    public function value($field_id)
-    {
+    public function value($field_id) {
         return filter_input(INPUT_POST, $field_id, FILTER_SANITIZE_SPECIAL_CHARS);
     }
 
@@ -43,8 +40,7 @@ class Form extends View
      *
      * @return bool
      */
-    public function isSubmitted(): bool
-    {
+    public function isSubmitted(): bool {
         return isset($this->data['buttons'][self::action()]);
     }
 
@@ -53,8 +49,7 @@ class Form extends View
      *
      * @return bool
      */
-    public function validate(): bool
-    {
+    public function validate(): bool {
         if ($this->isSubmitted()) {
             $is_valid = true;
             $form_values = $this->values();
@@ -75,8 +70,6 @@ class Form extends View
                         $is_valid = false;
                         break;
                     } else {
-                        // Sets field value if was filled correctly
-                        // so user doesnt have to re-enter
                         $field['value'] = $field_value;
                     }
                 }
@@ -107,8 +100,7 @@ class Form extends View
      *
      * @return array
      */
-    public function getErrors(): array
-    {
+    public function getErrors(): array {
         $errors = [];
 
         foreach ($this->data['fields'] as $field_id => $field) {
@@ -126,8 +118,7 @@ class Form extends View
      * @param array $values
      * @throws Exception
      */
-    public function fill(array $values): void
-    {
+    public function fill(array $values): void {
         foreach ($values as $value_id => $value) {
             if (isset($this->data['fields'][$value_id])) {
                 $this->data['fields'][$value_id]['value'] = $value;
@@ -142,8 +133,7 @@ class Form extends View
      *
      * @return mixed
      */
-    public static function action(): ?string
-    {
+    public static function action(): ?string {
         return filter_input(INPUT_POST, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
     }
 
@@ -154,8 +144,7 @@ class Form extends View
      * @return false|string
      * @throws Exception
      */
-    public function render($template_path = ROOT . '/core/templates/form.tpl.php'): string
-    {
+    public function render($template_path = ROOT . '/core/templates/form.tpl.php'): string {
         return parent::render($template_path);
     }
 }

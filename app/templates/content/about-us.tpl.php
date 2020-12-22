@@ -2,7 +2,7 @@
     <h2 class="reviews__title"><?php print $data['title'] ?></h2>
 
     <?php print $data['table']; ?>
-    <!-- Create form can be pre-rendered -->
+
     <?php if (isset($data['forms']['create'])): ?>
         <div class="create-form-wrapper">
             <?php print $data['forms']['create']; ?>

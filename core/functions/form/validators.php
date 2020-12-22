@@ -8,8 +8,7 @@
  * @param array $params
  * @return bool
  */
-function validate_fields_match($form_values, array &$form, array $params): bool
-{
+function validate_fields_match($form_values, array &$form, array $params): bool {
     foreach ($params as $field_index) {
         if ($form_values[$params[0]] !== $form_values[$field_index]) {
             $form['fields'][$field_index]['error'] = strtr('Field does not match with @field field', [
@@ -30,8 +29,7 @@ function validate_fields_match($form_values, array &$form, array $params): bool
  * @param array $field
  * @return bool
  */
-function validate_field_not_empty(string $field_value, array &$field): bool
-{
+function validate_field_not_empty(string $field_value, array &$field): bool {
     if ($field_value == '') {
         $field['error'] = 'Field must be filled';
         return false;
@@ -41,36 +39,13 @@ function validate_field_not_empty(string $field_value, array &$field): bool
 }
 
 /**
- * Chef if number is within the min and max range.
- *
- * @param string $field_value
- * @param array $field
- * @param array $params
- * @return bool
- */
-function validate_field_range(string $field_value, array &$field, array $params): bool
-{
-    if ($field_value < $params['min'] || $field_value > $params['max']) {
-        $field['error'] = strtr('Insert a number between @min - @max!', [
-            '@min' => $params['min'],
-            '@max' => $params['max']
-        ]);
-
-        return false;
-    }
-
-    return true;
-}
-
-/**
- * Check if input is numeric
+ * Check if input is numeric, but for optional field
  *
  * @param string $field_value
  * @param array $field
  * @return bool
  */
-function validate_numeric(string $field_value, array &$field): bool
-{
+function validate_numeric(string $field_value, array &$field): bool {
     if (!is_numeric($field_value) && strlen($field_value) > 0) {
         $field['error'] = 'Field input must be numeric';
 
@@ -87,8 +62,7 @@ function validate_numeric(string $field_value, array &$field): bool
  * @param array $field
  * @return bool
  */
-function validate_email(string $field_value, array &$field): bool
-{
+function validate_email(string $field_value, array &$field): bool {
     if (!preg_match('/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/', $field_value)) {
         $field['error'] = 'Invalid email format';
 
@@ -99,14 +73,13 @@ function validate_email(string $field_value, array &$field): bool
 }
 
 /**
- * Validate that name length is
+ * Validate that name length is below or equal to 40
  *
  * @param string $field_value
  * @param array $field
  * @return bool
  */
-function validate_name_length(string $field_value, array &$field)
-{
+function validate_name_length(string $field_value, array &$field) {
     if (strlen($field_value) >= 40) {
         $field['error'] = 'Too many letters, 40 is maximum';
 
@@ -117,14 +90,31 @@ function validate_name_length(string $field_value, array &$field)
 }
 
 /**
+ * Validate that textarea (comment) length
+ *
+ * @param string $field_value
+ * @param array $field
+ * @return bool
+ */
+function validate_textarea_length(string $field_value, array &$field) {
+    $field_value = trim($field_value, " \t\n\r");
+
+    if (strlen($field_value) <= 500 && strlen($field_value) > 0) {
+        return true;
+    }
+
+    $field['error'] = 'Too less or many letters. Only 1-400 is allowed.';
+    return false;
+}
+
+/**
  * Checks if first or last name doesn't contain any non alphabetic symbols
  *
  * @param string $field_value
  * @param array $field
  * @return bool
  */
-function validate_no_symbols_numbers(string $field_value, array &$field)
-{
+function validate_no_symbols_numbers(string $field_value, array &$field) {
     if (!preg_match('/^[_A-z]*((-|\s)*[_A-z])*$/', $field_value)) {
         $field['error'] = 'Your first or last name cannot contain numbers or symbols';
 

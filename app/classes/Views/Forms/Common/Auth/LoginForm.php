@@ -4,10 +4,8 @@ namespace App\Views\Forms\Common\Auth;
 
 use Core\Views\Form;
 
-class LoginForm extends Form
-{
-    public function __construct()
-    {
+class LoginForm extends Form {
+    public function __construct() {
         parent::__construct([
             'attr' => [
                 'class'  => 'sign-up-in',

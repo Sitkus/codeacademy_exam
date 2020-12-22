@@ -9,17 +9,17 @@
   margin: 5rem 0 12rem;
   padding: 5rem;
   width: 60rem;
-}
 
-.reviews a:hover {
-  background-color: chocolate;
-  color: white;
-}
+  &__title {
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 600;
+  }
 
-.reviews__title {
-  margin-bottom: 2rem;
-  text-align: center;
-  font-weight: 600;
+  a:hover {
+    background-color: chocolate;
+    color: white;
+  }
 }
 
 .table,
@@ -30,13 +30,13 @@ td {
 }
 
 td {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $gray;
   padding: 2rem 1.5rem;
 }
 
 th {
   padding: 2rem 1.5rem;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $gray;
 }
 
 .table {
@@ -61,48 +61,50 @@ th {
 #review-create-form {
   display: flex;
   flex-direction: column;
+
+  label {
+    margin-bottom: 2rem;
+    font-weight: 500;
+  }
+
+  button {
+    width: 50%;
+    align-self: center;
+    padding: 1.5rem;
+    margin-top: 2.5rem;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: chocolate;
+    color: white;
+    transition: 150ms all ease-in-out;
+    transform: translateY(0) scale(1);
+
+    &:hover {
+      background-color: darkgreen;
+    }
+
+    &:active {
+      transform: translateY(0.2rem) scale(1.03);
+    }
+  }
 }
 
-#review-create-form label {
-  margin-bottom: 2rem;
-  font-weight: 500;
-}
+.reviews {
+  &__textarea {
+    width: 100%;
+    height: 15rem;
+    resize: vertical;
+    padding: 1rem 1.5rem;
+    font-family: $font-family;
+    margin-top: 1rem;
+    outline: none;
+    border: 1px solid $gray;
 
-#review-create-form button {
-  width: 50%;
-  align-self: center;
-  padding: 1.5rem;
-  margin-top: 2.5rem;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  background-color: chocolate;
-  color: white;
-  transition: 150ms all ease-in-out;
-  transform: translateY(0) scale(1);
-}
-
-#review-create-form button:hover {
-  background-color: darkgreen;
-}
-
-#review-create-form button:active {
-  transform: translateY(0.2rem) scale(1.03);
-}
-
-.reviews__textarea {
-  width: 100%;
-  height: 15rem;
-  resize: vertical;
-  padding: 1rem 1.5rem;
-  font-family: 'Montserrat', 'sans-serif';
-  margin-top: 1rem;
-  outline: none;
-  border: 1px solid #ccc;
-}
-
-.reviews__textarea:focus {
-  border: 1px solid chocolate;
+    &:focus {
+      border: 1px solid chocolate;
+    }
+  }
 }
 
 .field-error {
@@ -121,14 +123,18 @@ th {
 \*------------------------------------*/
 
 @media screen and (max-width: 600px) {
+  #review-create-form label {
+    padding: 0 2rem;
+  }
+
   .reviews {
     padding: 0;
     width: 100%;
-  }
 
-  .reviews a:last-child {
-    display: block;
-    text-align: center;
+    a:last-child {
+      display: block;
+      text-align: center;
+    }
   }
 }
 

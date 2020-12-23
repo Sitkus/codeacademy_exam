@@ -63,7 +63,7 @@ function validate_numeric(string $field_value, array &$field): bool {
  * @return bool
  */
 function validate_email(string $field_value, array &$field): bool {
-    if (!preg_match('/[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4}/', $field_value)) {
+    if (!preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,5})$/', $field_value)) {
         $field['error'] = 'Invalid email format';
 
         return false;
@@ -103,7 +103,7 @@ function validate_textarea_length(string $field_value, array &$field) {
         return true;
     }
 
-    $field['error'] = 'Too less or many letters. Only 1-400 is allowed.';
+    $field['error'] = 'Too less or many letters. Only 1-500 is allowed.';
     return false;
 }
 
@@ -116,7 +116,7 @@ function validate_textarea_length(string $field_value, array &$field) {
  */
 function validate_no_symbols_numbers(string $field_value, array &$field) {
     if (!preg_match('/^[_A-z]*((-|\s)*[_A-z])*$/', $field_value)) {
-        $field['error'] = 'Your first or last name cannot contain numbers or symbols';
+        $field['error'] = 'Your first and last name cannot contain numbers or symbols';
 
         return false;
     }
